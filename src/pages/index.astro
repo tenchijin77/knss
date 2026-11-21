@@ -6,6 +6,7 @@ import hero from "../assets/hol/library_hero_3840x1240.png";
 import holLogo from "../assets/hol/library_logo_1280x720.png";
 import holCapsule from "../assets/hol/header_capsule_920x430.png";
 import shot from "../assets/hol/02_mhorzath_total_eclipse.png";
+import aldenImg from "../assets/alden/monk_kick_troll_staggers.png";
 import cover from "../assets/brand/zen-divers-book-cover.jpg";
 import mark from "../assets/brand/kns-studios-mark-glow.png";
 import { site } from "../data/site";
@@ -41,9 +42,7 @@ import { site } from "../data/site";
           </div>
         </a>
         <a class="card panel" href="/games/aldenexia-lightfall/">
-          <div class="card-art alden">
-            <span>ALDENEXIA</span><small>LIGHTFALL</small>
-          </div>
+          <Image src={aldenImg} alt="Aldenexia: Lightfall, a monk's kick staggers a troll" width={600} class="alden-img" />
           <div class="card-body">
             <div class="tags"><span class="tag mg">Game</span><span class="tag">In development</span></div>
             <h3>Aldenexia: Lightfall</h3>
@@ -99,6 +98,7 @@ import { site } from "../data/site";
   .card { display: flex; flex-direction: column; overflow: hidden; text-decoration: none; color: var(--ink); transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
   .card:hover { transform: translateY(-3px); border-color: var(--cy); box-shadow: 0 0 30px rgba(53,240,255,.15); color: var(--ink); }
   .card :global(img) { width: 100%; aspect-ratio: 920/430; object-fit: cover; image-rendering: pixelated; }
+  .card :global(.alden-img) { image-rendering: auto; object-position: center 60%; }
   .card-body { padding: 20px 22px 24px; }
   .card-art { aspect-ratio: 920/430; display: grid; place-items: center; }
   .card-art.alden { background: radial-gradient(circle at 50% 120%, rgba(255,59,216,.35), transparent 60%), radial-gradient(circle at 50% -30%, rgba(53,240,255,.25), transparent 55%), var(--bg-2); text-align: center; align-content: center; }

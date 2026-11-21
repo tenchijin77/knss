@@ -1,6 +1,28 @@
 ---
 import Base from "../../layouts/Base.astro";
 import { site } from "../../data/site";
+import { Image } from "astro:assets";
+import heroImg from "../../assets/alden/monk_kick_troll_staggers.png";
+import act1 from "../../assets/alden/arcanist_fireball_sandshifter_burning.png";
+import act2 from "../../assets/alden/arcanist_fireball_in_flight.png";
+import z1 from "../../assets/alden/01_kordava_1.jpg";
+import z2 from "../../assets/alden/03_ixtamar_beachhead_1.jpg";
+import z3 from "../../assets/alden/10_lumora_cisterns_1.jpg";
+import z4 from "../../assets/alden/11_sacred_springs_1.jpg";
+import z5 from "../../assets/alden/06_spectral_tower_1.jpg";
+import z6 from "../../assets/alden/07_sunder_keel_shoals_3.jpg";
+import z7 from "../../assets/alden/04_warforge_expanse_1.jpg";
+import z8 from "../../assets/alden/14_shifting_isles_1.jpg";
+const zones = [
+  { src: z1, name: "Kordava", alt: "A giant beetle on the beach at Kordava" },
+  { src: z2, name: "Ixtamar Beachhead", alt: "A fire golem on the lava at Ixtamar Beachhead" },
+  { src: z3, name: "Lumora Cisterns", alt: "A giant rat in torchlight in the Lumora Cisterns" },
+  { src: z4, name: "Sacred Springs", alt: "A black wolf among the pines at Sacred Springs" },
+  { src: z5, name: "Spectral Tower", alt: "The glowing crystal hall of the Spectral Tower" },
+  { src: z6, name: "Sunder-Keel Shoals", alt: "Two swamp brutes wading through Sunder-Keel Shoals" },
+  { src: z7, name: "Warforge Expanse", alt: "A giant rat-beast on the Warforge Expanse" },
+  { src: z8, name: "Shifting Isles", alt: "Ruined columns on the Shifting Isles" },
+];
 
 const pillars = [
   ["A world to get lost in", "Sandbox exploration in the spirit of the classic online RPGs. The story never gates where you can go; you find the world at your own pace."],
@@ -25,6 +47,7 @@ const ld = {
   jsonLd={ld}
 >
   <section class="hero">
+    <Image src={heroImg} alt="" class="hero-bg" widths={[1280, 1920, 2560]} sizes="100vw" loading="eager" fetchpriority="high" />
     <div class="glow"></div>
     <div class="wrap hero-inner">
       <div class="tags"><span class="tag mg">In development</span><span class="tag">Multiplayer RPG</span><span class="tag">Closed playtest</span></div>
@@ -33,6 +56,15 @@ const ld = {
       <div class="btns">
         <a class="btn alt" href={`mailto:${site.email}?subject=Aldenexia%20playtest`}>Ask about the playtest</a>
         <a class="btn ghost" href="/games/">All games</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap">
+      <div class="action">
+        <figure><Image src={act1} alt="An Arcanist's fireball sets a sandshifter alight at dusk" widths={[640, 1280]} sizes="(max-width: 900px) 100vw, 560px" /><figcaption>Arcanist vs. sandshifter</figcaption></figure>
+        <figure><Image src={act2} alt="A fireball in flight toward a sandshifter" widths={[640, 1280]} sizes="(max-width: 900px) 100vw, 560px" /><figcaption>Fireball in flight</figcaption></figure>
       </div>
     </div>
   </section>
@@ -52,11 +84,29 @@ const ld = {
   </section>
 
   <section class="tight">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow mg">The world</span>
+        <h2>Some of the places you'll find</h2>
+        <p class="lede">Around seventy zones are already prototyped, from desert coasts and lava fields to flooded temples and pine forests. Here are a few of their residents.</p>
+      </div>
+      <div class="zones">
+        {zones.map((z) => (
+          <figure>
+            <a href={z.src.src}><Image src={z.src} alt={z.alt} widths={[480, 960]} sizes="(max-width: 900px) 50vw, 290px" /></a>
+            <figcaption>{z.name}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
     <div class="wrap panel note">
       <div>
         <span class="eyebrow mg">Status</span>
         <h2>Early days, on purpose.</h2>
-        <p class="muted">Aldenexia is in closed testing with a small group of playtesters. Screenshots and a proper reveal come later. If you'd like to hear when it opens up, get in touch.</p>
+        <p class="muted">Aldenexia is in closed testing with a small group of playtesters. Everything shown here is work in progress, captured in the current build. If you'd like to hear when testing opens up, get in touch.</p>
       </div>
       <a class="btn primary" href="/contact/">Contact the studio</a>
     </div>
@@ -64,10 +114,21 @@ const ld = {
 </Base>
 
 <style>
-  .hero { position: relative; overflow: hidden; padding: 140px 0 96px; border-bottom: 1px solid var(--line); }
+  .hero { position: relative; overflow: hidden; padding: 200px 0 80px; border-bottom: 1px solid var(--line); min-height: min(80vh, 760px); display: flex; align-items: flex-end; }
+  .hero :global(.hero-bg) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+  .hero .wrap { width: 100%; }
+  .hero .lede { color: #ddd6ec; max-width: 60ch; }
+  .action { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .zones { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  figure { margin: 0; }
+  figure :global(img) { width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); }
+  .zones :global(img) { aspect-ratio: 12/5; object-fit: cover; transition: border-color .2s ease, transform .2s ease; }
+  .zones a:hover :global(img) { border-color: var(--mg); transform: translateY(-2px); }
+  figcaption { font-family: var(--display); font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-top: 8px; }
+  @media (max-width: 900px) { .action { grid-template-columns: 1fr; } .zones { grid-template-columns: 1fr 1fr; } }
   .glow { position: absolute; inset: 0; background:
-    radial-gradient(700px 380px at 75% 110%, rgba(255,59,216,.28), transparent 65%),
-    radial-gradient(600px 340px at 70% -10%, rgba(53,240,255,.22), transparent 60%); }
+    linear-gradient(180deg, rgba(15,7,25,.05) 0%, rgba(15,7,25,.45) 50%, rgba(15,7,25,.97) 100%),
+    linear-gradient(90deg, rgba(15,7,25,.75), transparent 65%); }
   .hero-inner { position: relative; }
   h1 { display: flex; flex-direction: column; gap: 6px; margin-bottom: .4em; }
   .t1 { font-size: clamp(2.8rem, 8vw, 5.6rem); letter-spacing: .18em; text-shadow: 0 0 28px rgba(53,240,255,.45); }
