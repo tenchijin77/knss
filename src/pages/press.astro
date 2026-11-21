@@ -1,0 +1,76 @@
+---
+import Base from "../layouts/Base.astro";
+import { site } from "../data/site";
+import { Image } from "astro:assets";
+const thumbs = import.meta.glob<{ default: ImageMetadata }>("../assets/hol/*_*x*.png", { eager: true });
+const thumb = (f: string) => thumbs[`../assets/hol/${f}`].default;
+const holArt = [
+  ["header_capsule_920x430.png", "Header capsule", "920 × 430"],
+  ["main_capsule_1232x706.png", "Main capsule", "1232 × 706"],
+  ["library_capsule_600x900.png", "Vertical capsule", "600 × 900"],
+  ["library_hero_3840x1240.png", "Key art, no logo", "3840 × 1240"],
+  ["library_logo_1280x720.png", "Game logo, transparent", "1220 × 516"],
+];
+---
+<Base title="Press Kit" description="Press kit for Kuro Neko Sama Studios and Heroes of Lumora: fact sheets, logos, key art and screenshots, free to use in coverage.">
+  <div class="wrap page-hero">
+    <span class="eyebrow">Press kit</span>
+    <h1>Press kit</h1>
+    <p>Everything here is free to use in articles, videos and streams about the studio and its games. For keys, interviews or anything else, email <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+  </div>
+
+  <section class="tight">
+    <div class="wrap grid-2">
+      <div class="panel box">
+        <h2>The studio</h2>
+        <dl>
+          <dt>Name</dt><dd>{site.name}</dd>
+          <dt>Founder</dt><dd>{site.founder}</dd>
+          <dt>Based in</dt><dd>Las Vegas, Nevada, USA</dd>
+          <dt>Team</dt><dd>Solo developer and author</dd>
+          <dt>Makes</dt><dd>Games and books</dd>
+          <dt>Website</dt><dd><a href="/">kuronekosamastudios.com</a></dd>
+        </dl>
+        <div class="btns"><a class="btn ghost" href="/press/kns-studios-logo-kit.zip" download>Studio logo kit (.zip)</a></div>
+      </div>
+      <div class="panel box">
+        <h2>Heroes of Lumora</h2>
+        <dl>
+          <dt>Genre</dt><dd>Fantasy bullet-hell, action roguelike</dd>
+          <dt>Platforms</dt><dd>Windows, Linux / SteamOS</dd>
+          <dt>Players</dt><dd>Single-player</dd>
+          <dt>Release</dt><dd>To be announced (Steam)</dd>
+          <dt>Price</dt><dd>To be announced</dd>
+        </dl>
+        <p class="muted" style="margin-top:1em">Hold the line in a medieval fantasy bullet-hell. Defend the town of Lumora and evacuate its people through a 30-minute siege, or take five heroes into six endless zones. Every level-up is a choice, every zone ends with a boss, and something ancient is waking beneath the walls.</p>
+        <div class="btns"><a class="btn primary" href="/press/heroes-of-lumora-press-kit.zip" download>Art + 13 screenshots (.zip, 17 MB)</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap">
+      <h2>Heroes of Lumora art</h2>
+      <div class="art">
+        {holArt.map(([f, label, size]) => (
+          <a class="panel tile" href={`/press/heroes-of-lumora/${f}`} download>
+            <Image src={thumb(f)} alt={label} width={560} />
+            <span><strong>{label}</strong> <small class="muted">{size} PNG</small></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .box { padding: 30px; }
+  dl { display: grid; grid-template-columns: max-content 1fr; gap: 8px 20px; margin: 0; }
+  dt { color: var(--muted); font-family: var(--display); letter-spacing: .06em; text-transform: uppercase; font-size: .8rem; padding-top: 3px; }
+  dd { margin: 0; }
+  .art { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
+  .tile { display: flex; flex-direction: column; overflow: hidden; text-decoration: none; color: var(--ink); }
+  .tile:hover { border-color: var(--cy); color: var(--ink); }
+  .tile :global(img) { width: 100%; aspect-ratio: 16/9; object-fit: contain; background: var(--bg-2); image-rendering: pixelated; }
+  .tile span { padding: 14px 16px; display: flex; justify-content: space-between; gap: 10px; }
+</style>

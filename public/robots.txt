@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kuronekosamastudios.com/sitemap-index.xml

@@ -1,0 +1,79 @@
+---
+import Base from "../../layouts/Base.astro";
+import { site } from "../../data/site";
+
+const pillars = [
+  ["A world to get lost in", "Sandbox exploration in the spirit of the classic online RPGs. The story never gates where you can go; you find the world at your own pace."],
+  ["Choices that stay made", "Hard decisions with lasting consequences. Factions remember, prices shift, towns change, and the obvious choice isn't always the right one."],
+  ["Three ways it can end", "Light, Dark, or Unsworn. Where the world ends up depends on who you stood with and what you did."],
+  ["Play together", "A persistent server you can share with friends, with companions who carry the story alongside you."],
+];
+const ld = {
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  name: "Aldenexia: Lightfall",
+  url: `${site.url}/games/aldenexia-lightfall/`,
+  description: "A multiplayer fantasy RPG on a persistent world, with sandbox exploration, lasting choices and three endings.",
+  genre: ["RPG", "Fantasy"],
+  playMode: ["MultiPlayer", "CoOp"],
+  author: { "@id": `${site.url}/#org` },
+};
+---
+<Base
+  title="Aldenexia: Lightfall, Multiplayer Fantasy RPG"
+  description="Aldenexia: Lightfall is a multiplayer fantasy RPG in development: a persistent world built for exploration, choices with lasting consequences and three endings."
+  jsonLd={ld}
+>
+  <section class="hero">
+    <div class="glow"></div>
+    <div class="wrap hero-inner">
+      <div class="tags"><span class="tag mg">In development</span><span class="tag">Multiplayer RPG</span><span class="tag">Closed playtest</span></div>
+      <h1><span class="t1">Aldenexia</span><span class="t2">Lightfall</span></h1>
+      <p class="lede">A multiplayer fantasy RPG on a persistent world. Not a theme park: a big, old world with three hundred years of history, built for wandering, getting lost and making choices you have to live with.</p>
+      <div class="btns">
+        <a class="btn alt" href={`mailto:${site.email}?subject=Aldenexia%20playtest`}>Ask about the playtest</a>
+        <a class="btn ghost" href="/games/">All games</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Design pillars</span>
+        <h2>What Aldenexia is built around</h2>
+      </div>
+      <div class="grid-2">
+        {pillars.map(([h, p]) => (
+          <div class="panel pillar"><h3>{h}</h3><p class="muted">{p}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap panel note">
+      <div>
+        <span class="eyebrow mg">Status</span>
+        <h2>Early days, on purpose.</h2>
+        <p class="muted">Aldenexia is in closed testing with a small group of playtesters. Screenshots and a proper reveal come later. If you'd like to hear when it opens up, get in touch.</p>
+      </div>
+      <a class="btn primary" href="/contact/">Contact the studio</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { position: relative; overflow: hidden; padding: 140px 0 96px; border-bottom: 1px solid var(--line); }
+  .glow { position: absolute; inset: 0; background:
+    radial-gradient(700px 380px at 75% 110%, rgba(255,59,216,.28), transparent 65%),
+    radial-gradient(600px 340px at 70% -10%, rgba(53,240,255,.22), transparent 60%); }
+  .hero-inner { position: relative; }
+  h1 { display: flex; flex-direction: column; gap: 6px; margin-bottom: .4em; }
+  .t1 { font-size: clamp(2.8rem, 8vw, 5.6rem); letter-spacing: .18em; text-shadow: 0 0 28px rgba(53,240,255,.45); }
+  .t2 { font-size: clamp(1rem, 2.4vw, 1.5rem); letter-spacing: .6em; color: var(--mg); font-weight: 500; }
+  .pillar { padding: 28px; }
+  .pillar p { margin: 0; }
+  .note { display: flex; gap: 32px; align-items: center; justify-content: space-between; padding: 32px; flex-wrap: wrap; }
+  .note p { margin: 0; }
+</style>

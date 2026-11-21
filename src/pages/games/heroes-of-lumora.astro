@@ -1,0 +1,174 @@
+---
+import Base from "../../layouts/Base.astro";
+import { Image } from "astro:assets";
+import StoreButtons from "../../components/StoreButtons.astro";
+import { site } from "../../data/site";
+import hero from "../../assets/hol/library_hero_3840x1240.png";
+import logo from "../../assets/hol/library_logo_1280x720.png";
+import s1 from "../../assets/hol/01_gearspire_horde.png";
+import s2 from "../../assets/hol/02_mhorzath_total_eclipse.png";
+import s3 from "../../assets/hol/06_level_up_cards.png";
+import s4 from "../../assets/hol/07_thunderstep_xalgorath.png";
+import s5 from "../../assets/hol/08_veyras_hollow_fate_card.png";
+import s6 from "../../assets/hol/09_campaign_north_gate.png";
+import s7 from "../../assets/hol/11_class_select.png";
+import s8 from "../../assets/hol/05_blightmoor_gravecaller.png";
+import s9 from "../../assets/hol/12_lumora_outskirts_horde.png";
+
+const shots = [
+  { src: s6, alt: "The campaign at the north gate of Lumora, with the horde pouring in" },
+  { src: s2, alt: "Mh'orzath's Total Eclipse phase, with sigils and the boss bar" },
+  { src: s3, alt: "Choosing an upgrade card at level-up" },
+  { src: s4, alt: "Fighting the zone boss Xal'gorath in Thunderstep Mesa" },
+  { src: s7, alt: "Class select screen showing all five heroes" },
+  { src: s5, alt: "A Fate Card reveal in Veyra's Hollow" },
+  { src: s1, alt: "A late wave in Gearspire Foundry" },
+  { src: s8, alt: "The Gravecaller and an army of the dead in Blightmoor Wastes" },
+  { src: s9, alt: "The horde closing in on Lumora Outskirts" },
+];
+
+const heroes = [
+  ["Woodstalker", "Ranger", "Rapid arrows, traps and a beast companion."],
+  ["Troubadour", "Bard", "Songs that heal, inspire and confound."],
+  ["Arcanist", "Mage", "Slow, devastating spellcraft."],
+  ["Voidknight", "Tank", "Shields, lifesteal and armour."],
+  ["Gravecaller", "Necromancer", "Curses, plague and an army of the dead."],
+];
+const zones = ["Lumora Outskirts", "Blightmoor Wastes", "Thornbreach Wilds", "Gearspire Foundry", "Veyra's Hollow", "Thunderstep Mesa"];
+
+const ld = {
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  name: "Heroes of Lumora",
+  url: `${site.url}/games/heroes-of-lumora/`,
+  description: "A medieval fantasy bullet-hell: defend the town of Lumora through a 30-minute siege, or take five heroes into six endless zones.",
+  genre: ["Bullet hell", "Action roguelike", "Survivors-like"],
+  gamePlatform: ["PC", "Linux"],
+  playMode: "SinglePlayer",
+  author: { "@id": `${site.url}/#org` },
+  publisher: { "@id": `${site.url}/#org` },
+  image: `${site.url}/press/heroes-of-lumora/header_capsule_920x430.png`,
+};
+---
+<Base
+  title="Heroes of Lumora: Fantasy Bullet-Hell"
+  description="Heroes of Lumora is a medieval fantasy bullet-hell. Defend the town through a 30-minute siege, or take five heroes into six endless zones. Coming to Steam."
+  ogImage="/press/heroes-of-lumora/header_capsule_920x430.png"
+  jsonLd={ld}
+>
+  <section class="hero">
+    <Image src={hero} alt="" class="hero-bg" widths={[1280, 1920, 2880]} sizes="100vw" loading="eager" fetchpriority="high" />
+    <div class="hero-fade"></div>
+    <div class="wrap hero-inner">
+      <div class="tags"><span class="tag cy">Bullet hell</span><span class="tag">Action roguelike</span><span class="tag">Windows · Linux</span></div>
+      <h1 class="sr">Heroes of Lumora</h1>
+      <Image src={logo} alt="" width={560} class="logo-art" loading="eager" />
+      <p class="lede">Hold the line in a medieval fantasy bullet-hell. Defend the town of Lumora and evacuate its people through a 30-minute siege, or take five heroes into six endless zones. Every level-up is a choice, every zone ends with a boss, and something ancient is waking beneath the walls.</p>
+      <StoreButtons />
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap grid-2">
+      <div>
+        <span class="eyebrow mg">At dawn, the gates of Lumora shatter</span>
+        <h2>You are the only thing standing between them and the dark.</h2>
+        <p>The creatures of the Umbral Talon pour into the streets, and the people of Lumora are trapped among them. Rescue the villagers from the attacking monsters and lead them to safety.</p>
+        <p>Heroes of Lumora is a fantasy bullet-hell with roots in Vampire Survivors. Your hero attacks automatically, so your job is to move and to choose. Gather XP and pick a card at every level-up, crack open skill chests and draw Fate Cards that bless, bargain or curse. By the end of each run you'll have built something different.</p>
+      </div>
+      <div class="panel facts">
+        <h3>The Siege of Lumora</h3>
+        <ul>
+          <li>A 25–30 minute story run. Rescue villagers as the town fills with the horde. Lose too many, and Lumora falls.</li>
+          <li>Buy magi from Timot the merchant and post them as turrets at the gates.</li>
+          <li>Fight beside Annadaeus the bard, and hold out until the Archmage Tenchijin arrives to turn the tide.</li>
+          <li>Survive the lieutenants of the horde, then face <strong>Mh'orzath, the Eclipsed One</strong>, in a three-phase battle as the sun goes dark.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap">
+      <div class="gallery">
+        {shots.map((s, i) => (
+          <a href={s.src.src} class={i === 0 ? "big" : ""}>
+            <Image src={s.src} alt={s.alt} loading={i < 3 ? "eager" : "lazy"} widths={[480, 960, 1440]} sizes={i === 0 ? "(max-width: 900px) 100vw, 760px" : "(max-width: 900px) 50vw, 380px"} />
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Endless mode</span>
+        <h2>Five heroes. Six zones. One more run.</h2>
+        <p class="lede">Each zone has its own music and a boss at the 20-minute mark. Beat it to bank your victory, then stay for overtime and chase a high score. Spend your Solari in the Upgrade Store between runs.</p>
+      </div>
+      <div class="heroes">
+        {heroes.map(([n, c, d]) => (
+          <div class="panel hero-card">
+            <span class="eyebrow">{c}</span>
+            <h3>{n}</h3>
+            <p class="muted">{d}</p>
+          </div>
+        ))}
+      </div>
+      <div class="tags zones">{zones.map((z) => <span class="tag mg">{z}</span>)}</div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap panel details">
+      <div>
+        <h3>Details</h3>
+        <dl>
+          <dt>Developer</dt><dd>{site.name} (solo developer)</dd>
+          <dt>Platforms</dt><dd>Windows 10+ (64-bit), Linux / SteamOS</dd>
+          <dt>Engine</dt><dd>Godot 4</dd>
+          <dt>Players</dt><dd>Single-player</dd>
+          <dt>Languages</dt><dd>English</dd>
+          <dt>Release</dt><dd>To be announced</dd>
+        </dl>
+      </div>
+      <div>
+        <h3>Wishlist it</h3>
+        <p class="muted">The Steam page goes up as soon as Steamworks verification is done. Wishlists are the single biggest help a small game can get.</p>
+        <StoreButtons />
+        <p class="muted small">Made in loving memory of Kenji and Oni.</p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .hero { position: relative; padding: 0; min-height: min(80vh, 780px); display: flex; align-items: flex-end; overflow: hidden; border-bottom: 1px solid var(--line); }
+  .hero :global(.hero-bg) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; image-rendering: pixelated; }
+  .hero-fade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,7,25,.05) 0%, rgba(15,7,25,.5) 45%, rgba(15,7,25,.97) 100%), linear-gradient(90deg, rgba(15,7,25,.8), transparent 70%); }
+  .hero-inner { position: relative; padding-top: 140px; padding-bottom: 64px; width: 100%; }
+  .hero :global(.logo-art) { width: min(520px, 82vw); margin: 4px 0 16px; image-rendering: pixelated; filter: drop-shadow(0 6px 18px rgba(0,0,0,.6)); }
+  .hero .lede { color: #ddd6ec; max-width: 62ch; }
+  .facts { padding: 28px; }
+  .facts ul { margin: 0; padding-left: 1.1em; display: grid; gap: 10px; }
+  .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .gallery a { display: block; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); transition: border-color .2s ease, transform .2s ease; }
+  .gallery a:hover { border-color: var(--cy); transform: translateY(-2px); }
+  .gallery a.big { grid-column: span 2; grid-row: span 2; }
+  .gallery :global(img) { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 16/9; image-rendering: pixelated; }
+  @media (max-width: 900px) { .gallery { grid-template-columns: 1fr 1fr; } }
+  .heroes { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+  .hero-card { padding: 22px; }
+  .hero-card p { margin: 0; font-size: .95rem; }
+  @media (max-width: 1000px) { .heroes { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .heroes { grid-template-columns: 1fr; } }
+  .zones { margin-top: 24px; }
+  .details { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 32px; }
+  @media (max-width: 900px) { .details { grid-template-columns: 1fr; } }
+  dl { display: grid; grid-template-columns: max-content 1fr; gap: 8px 20px; margin: 0; }
+  dt { color: var(--muted); font-family: var(--display); letter-spacing: .06em; text-transform: uppercase; font-size: .8rem; padding-top: 3px; }
+  dd { margin: 0; }
+  .small { font-size: .88rem; margin-top: 1.4em; }
+</style>

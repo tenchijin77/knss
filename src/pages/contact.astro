@@ -1,0 +1,32 @@
+---
+import Base from "../layouts/Base.astro";
+import { site } from "../data/site";
+const reasons = [
+  ["Press & creators", "Keys, interviews, assets beyond the press kit.", "Press request"],
+  ["Playtesting", "Interested in testing Aldenexia: Lightfall or future builds.", "Playtest"],
+  ["Players", "Bugs, feedback, or just saying hi.", "Player feedback"],
+  ["Business", "Publishing, licensing, events and everything else.", "Business enquiry"],
+];
+---
+<Base title="Contact" description="Contact Kuro Neko Sama Studios for press, playtesting, player feedback or business enquiries.">
+  <div class="wrap page-hero">
+    <span class="eyebrow">Contact</span>
+    <h1>Get in touch</h1>
+    <p>Email is the best way to reach the studio: <a href={`mailto:${site.email}`}>{site.email}</a></p>
+  </div>
+  <section class="tight">
+    <div class="wrap grid-2">
+      {reasons.map(([h, p, subj]) => (
+        <a class="panel reason" href={`mailto:${site.email}?subject=${encodeURIComponent(subj)}`}>
+          <h3>{h}</h3><p class="muted">{p}</p><span class="go">Email →</span>
+        </a>
+      ))}
+    </div>
+  </section>
+</Base>
+<style>
+  .reason { padding: 26px; text-decoration: none; color: var(--ink); }
+  .reason:hover { border-color: var(--cy); color: var(--ink); }
+  .reason p { margin: 0 0 .6em; }
+  .go { font-family: var(--display); color: var(--cy); letter-spacing: .08em; text-transform: uppercase; font-size: .85rem; }
+</style>

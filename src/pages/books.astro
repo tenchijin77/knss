@@ -1,0 +1,55 @@
+---
+import Base from "../layouts/Base.astro";
+import { Image } from "astro:assets";
+import { books } from "../data/books";
+import { site } from "../data/site";
+import cover from "../assets/brand/zen-divers-book-cover.jpg";
+
+const covers: Record<string, ImageMetadata> = { "zen-divers": cover };
+const ld = books.filter((b) => b.status === "available").map((b) => ({
+  "@context": "https://schema.org",
+  "@type": "Book",
+  name: b.title,
+  author: { "@type": "Person", name: site.founder },
+  publisher: { "@id": `${site.url}/#org` },
+  url: b.url,
+}));
+---
+<Base title="Books" description="Books from Kuro Neko Sama Studios by Ross Wilkinson, including Zen Divers, a field guide to advanced scuba skills." jsonLd={ld}>
+  <div class="wrap page-hero">
+    <span class="eyebrow">Books</span>
+    <h1>Books</h1>
+    <p>Written by Ross Wilkinson and published under the Kuro Neko Sama Studios name.</p>
+  </div>
+  <section class="tight">
+    <div class="wrap">
+      {books.map((b) => (
+        <article class="panel book">
+          <div class="cover">
+            {covers[b.slug]
+              ? <Image src={covers[b.slug]} alt={`${b.title} book cover`} width={360} />
+              : <div class="placeholder"><span>{b.title}</span></div>}
+          </div>
+          <div class="body">
+            <div class="tags">
+              {b.status === "available" ? <span class="tag cy">Available now</span> : <span class="tag mg">In progress</span>}
+            </div>
+            <h2>{b.title}</h2>
+            {b.subtitle && <p class="sub">{b.subtitle}</p>}
+            <p class="muted">{b.blurb}</p>
+            {b.url && <div class="btns"><a class="btn primary" href={b.url} rel="noopener">{b.urlLabel}</a></div>}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</Base>
+
+<style>
+  .book { display: grid; grid-template-columns: 260px 1fr; gap: 36px; padding: 32px; margin-bottom: 28px; align-items: center; }
+  .cover :global(img) { border-radius: 6px; box-shadow: 0 12px 34px rgba(0,0,0,.55); }
+  .placeholder { aspect-ratio: 2/3; border-radius: 6px; border: 1px dashed var(--line); display: grid; place-items: center; padding: 20px; text-align: center; background: var(--bg-2); }
+  .placeholder span { font-family: var(--display); color: var(--muted); letter-spacing: .06em; }
+  .sub { font-family: var(--display); letter-spacing: .14em; text-transform: uppercase; color: var(--cy); font-size: .85rem; }
+  @media (max-width: 700px) { .book { grid-template-columns: 1fr; } .cover { max-width: 220px; } }
+</style>

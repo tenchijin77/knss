@@ -1,0 +1,50 @@
+---
+import Base from "../../layouts/Base.astro";
+import { Image } from "astro:assets";
+import StoreButtons from "../../components/StoreButtons.astro";
+import holCapsule from "../../assets/hol/main_capsule_1232x706.png";
+---
+<Base title="Games" description="Games from Kuro Neko Sama Studios: Heroes of Lumora, a fantasy bullet-hell coming to Steam, and Aldenexia: Lightfall, a multiplayer fantasy RPG in development.">
+  <div class="wrap page-hero">
+    <span class="eyebrow">Games</span>
+    <h1>Two worlds, one studio.</h1>
+    <p>Both games share a home: the desert town of Lumora and the people in it, like the bard Annadaeus and the Archmage Tenchijin.</p>
+  </div>
+
+  <section class="tight">
+    <div class="wrap">
+      <article class="panel game">
+        <a href="/games/heroes-of-lumora/"><Image src={holCapsule} alt="Heroes of Lumora key art" widths={[640, 1232]} sizes="(max-width: 900px) 100vw, 600px" /></a>
+        <div class="body">
+          <div class="tags"><span class="tag cy">Bullet hell</span><span class="tag">Single-player</span><span class="tag">Coming to Steam</span></div>
+          <h2><a href="/games/heroes-of-lumora/">Heroes of Lumora</a></h2>
+          <p class="muted">Defend Lumora through a 30-minute siege, or take five heroes into six endless zones. Every level-up is a choice, and every zone ends with a boss.</p>
+          <StoreButtons><a class="btn ghost" href="/games/heroes-of-lumora/">Details</a></StoreButtons>
+        </div>
+      </article>
+
+      <article class="panel game">
+        <a href="/games/aldenexia-lightfall/" class="alden"><span>ALDENEXIA</span><small>LIGHTFALL</small></a>
+        <div class="body">
+          <div class="tags"><span class="tag mg">RPG</span><span class="tag">Multiplayer</span><span class="tag">In development</span></div>
+          <h2><a href="/games/aldenexia-lightfall/">Aldenexia: Lightfall</a></h2>
+          <p class="muted">A multiplayer fantasy RPG on a persistent world: sandbox exploration, choices that stay made and three possible endings.</p>
+          <div class="btns"><a class="btn ghost" href="/games/aldenexia-lightfall/">Details</a></div>
+        </div>
+      </article>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .game { display: grid; grid-template-columns: 1.1fr 1fr; overflow: hidden; margin-bottom: 28px; }
+  .game > a :global(img) { width: 100%; height: 100%; object-fit: cover; image-rendering: pixelated; }
+  .body { padding: 32px; align-self: center; }
+  .body h2 a { color: var(--ink); text-decoration: none; }
+  .body h2 a:hover { color: var(--cy); }
+  .alden { display: grid; place-content: center; text-align: center; min-height: 300px; text-decoration: none;
+    background: radial-gradient(circle at 50% 120%, rgba(255,59,216,.35), transparent 60%), radial-gradient(circle at 50% -30%, rgba(53,240,255,.25), transparent 55%), var(--bg-2); }
+  .alden span { font-family: var(--display); font-weight: 700; font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: .28em; color: #fff; text-shadow: 0 0 18px rgba(53,240,255,.6); }
+  .alden small { font-family: var(--display); letter-spacing: .5em; color: var(--mg); }
+  @media (max-width: 900px) { .game { grid-template-columns: 1fr; } }
+</style>

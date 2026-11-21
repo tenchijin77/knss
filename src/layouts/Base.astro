@@ -1,0 +1,101 @@
+---
+import "../styles/global.css";
+import { site, nav } from "../data/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+  jsonLd?: object | object[];
+  ogImage?: string;
+  noindex?: boolean;
+}
+const { title, description: rawDesc = site.description, jsonLd, ogImage = "/og.png", noindex = false } = Astro.props;
+const description = rawDesc.length > 158 ? rawDesc.slice(0, 155).replace(/\s+\S*$/, "") + "…" : rawDesc;
+const fullTitle = title ? `${title} | ${site.name}` : `${site.name} | Indie Games & Books`;
+const canonical = new URL(Astro.url.pathname, site.url).href;
+const path = Astro.url.pathname;
+const org = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": `${site.url}/#org`,
+  name: site.name,
+  url: site.url,
+  logo: `${site.url}/kns-studios-mark-flat.svg`,
+  founder: { "@type": "Person", name: site.founder },
+  email: site.email,
+  address: { "@type": "PostalAddress", addressLocality: site.city, addressRegion: site.region, addressCountry: "US" },
+};
+const ld = [org, ...(jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [])];
+const year = new Date().getFullYear();
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#0f0719" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={new URL(ogImage, site.url).href} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <script type="application/ld+json" set:html={JSON.stringify(ld)} />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap bar">
+        <a href="/" class="logo" aria-label={`${site.name} home`}>
+          <img src="/kns-studios-logo-horizontal-glow.svg" alt={site.name} width="240" height="52" />
+        </a>
+        <nav aria-label="Main">
+          <ul>
+            {nav.map((n) => <li><a href={n.href} aria-current={path.startsWith(n.href) ? "page" : undefined}>{n.label}</a></li>)}
+          </ul>
+        </nav>
+        <details class="mobile-nav">
+          <summary aria-label="Menu">Menu</summary>
+          <ul>
+            <li><a href="/">Home</a></li>
+            {nav.map((n) => <li><a href={n.href}>{n.label}</a></li>)}
+          </ul>
+        </details>
+      </div>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="foot">
+          <div>
+            <img src="/kns-studios-mark-glow.svg" alt="" width="64" height="64" />
+            <p style="margin-top:12px">Games and books, made by hand in {site.city}.</p>
+          </div>
+          <ul>
+            <li><a href="/games/heroes-of-lumora/">Heroes of Lumora</a></li>
+            <li><a href="/games/aldenexia-lightfall/">Aldenexia: Lightfall</a></li>
+            <li><a href="/books/">Books</a></li>
+          </ul>
+          <ul>
+            <li><a href="/press/">Press kit</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/contact/">Contact</a></li>
+            <li><a href="/privacy/">Privacy</a></li>
+          </ul>
+        </div>
+        <p class="legal">© {year} Ross Wilkinson / {site.name}. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+---
+import Base from "../layouts/Base.astro";
+import { Image } from "astro:assets";
+import mark from "../assets/brand/kns-studios-mark-glow.png";
+---
+<Base title="About the Studio" description="Kuro Neko Sama Studios is the one-person game and book studio of Ross Wilkinson in Las Vegas, maker of Heroes of Lumora and Aldenexia: Lightfall.">
+  <div class="wrap page-hero about">
+    <div>
+      <span class="eyebrow">About</span>
+      <h1>One person, a lot of hats.</h1>
+      <p>Kuro Neko Sama Studios is the home for Ross Wilkinson's games and books, in Las Vegas, Nevada.</p>
+    </div>
+    <Image src={mark} alt="Kuro Neko Sama Studios cat mark" width={260} />
+  </div>
+  <section class="tight">
+    <div class="wrap prose">
+      <p>Ross designs and builds the games in Godot, writes the books, and makes music. By day he's a senior network architect and a PADI scuba instructor, which is where the first book, <a href="/books/"><em>Zen Divers</em></a>, came from.</p>
+      <p>The games grew out of years spent in the big online worlds of EverQuest. Heroes of Lumora is the fast one: a fantasy bullet-hell you can finish in an evening and replay for months. Aldenexia: Lightfall is the long one: a multiplayer RPG about exploring a big world and living with your choices. The two share a home, the desert town of Lumora, and some of its people.</p>
+      <p>The studio used to go by two names, Kuro Neko Sama Games and KNS Books. As of late 2026 they're one: Kuro Neko Sama Studios.</p>
+      <div class="btns"><a class="btn primary" href="/games/">The games</a><a class="btn ghost" href="/contact/">Say hello</a></div>
+    </div>
+  </section>
+</Base>
+<style>
+  .about { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; }
+  @media (max-width: 760px) { .about { grid-template-columns: 1fr; } .about :global(img) { width: 160px; } }
+</style>

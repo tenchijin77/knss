@@ -1,0 +1,13 @@
+---
+import { site } from "../data/site";
+const { steam = site.links.steamHol, itch = site.links.itchHol } = Astro.props;
+---
+<div class="btns">
+  {steam
+    ? <a class="btn primary" href={steam} rel="noopener">Wishlist on Steam</a>
+    : <span class="btn soon" title="The Steam page goes live after Steamworks verification">Steam page coming soon</span>}
+  {itch
+    ? <a class="btn ghost" href={itch} rel="noopener">itch.io</a>
+    : <span class="btn soon">itch.io coming soon</span>}
+  <slot />
+</div>

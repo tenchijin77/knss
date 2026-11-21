@@ -1,0 +1,115 @@
+---
+import Base from "../layouts/Base.astro";
+import { Image } from "astro:assets";
+import StoreButtons from "../components/StoreButtons.astro";
+import hero from "../assets/hol/library_hero_3840x1240.png";
+import holLogo from "../assets/hol/library_logo_1280x720.png";
+import holCapsule from "../assets/hol/header_capsule_920x430.png";
+import shot from "../assets/hol/02_mhorzath_total_eclipse.png";
+import cover from "../assets/brand/zen-divers-book-cover.jpg";
+import mark from "../assets/brand/kns-studios-mark-glow.png";
+import { site } from "../data/site";
+---
+<Base description={site.description}>
+  <section class="hero">
+    <Image src={hero} alt="" class="hero-bg" widths={[1280, 1920, 2880]} sizes="100vw" loading="eager" fetchpriority="high" />
+    <div class="hero-fade"></div>
+    <div class="wrap hero-inner">
+      <span class="eyebrow">Now in development · Heroes of Lumora</span>
+      <Image src={holLogo} alt="Heroes of Lumora" width={560} class="hol-logo" loading="eager" />
+      <p class="lede">At dawn, the gates of Lumora shatter. Hold the line in a medieval fantasy bullet-hell: rescue the townsfolk, build your hero one level-up at a time, and face the Eclipsed One as the sun goes dark.</p>
+      <StoreButtons>
+        <a class="btn primary" href="/games/heroes-of-lumora/">See the game</a>
+      </StoreButtons>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow mg">The work</span>
+        <h2>Games and books from one small black cat.</h2>
+        <p class="lede">Kuro Neko Sama Studios is a one-person studio: the same developer designs and codes the games and writes the books.</p>
+      </div>
+      <div class="grid-3">
+        <a class="card panel" href="/games/heroes-of-lumora/">
+          <Image src={holCapsule} alt="Heroes of Lumora key art" width={600} />
+          <div class="card-body">
+            <div class="tags"><span class="tag cy">Game</span><span class="tag">Coming to Steam</span></div>
+            <h3>Heroes of Lumora</h3>
+            <p class="muted">A fantasy bullet-hell. Five heroes, six endless zones and a 30-minute siege of the town.</p>
+          </div>
+        </a>
+        <a class="card panel" href="/games/aldenexia-lightfall/">
+          <div class="card-art alden">
+            <span>ALDENEXIA</span><small>LIGHTFALL</small>
+          </div>
+          <div class="card-body">
+            <div class="tags"><span class="tag mg">Game</span><span class="tag">In development</span></div>
+            <h3>Aldenexia: Lightfall</h3>
+            <p class="muted">A multiplayer fantasy RPG on a persistent world, built for getting lost in.</p>
+          </div>
+        </a>
+        <a class="card panel" href="/books/">
+          <div class="card-art book"><Image src={cover} alt="Zen Divers book cover" width={260} /></div>
+          <div class="card-body">
+            <div class="tags"><span class="tag cy">Book</span><span class="tag">Available now</span></div>
+            <h3>Zen Divers</h3>
+            <p class="muted">A field guide to advanced scuba skills, from a PADI Master Scuba Diver Trainer.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="wrap grid-2 split">
+      <Image src={shot} alt="Mh'orzath's Total Eclipse boss phase in Heroes of Lumora" widths={[640, 960, 1280]} sizes="(max-width: 900px) 100vw, 560px" class="shot" />
+      <div>
+        <span class="eyebrow">Why "Kuro Neko Sama"</span>
+        <h2>What's in the name.</h2>
+        <p>Kuro neko is Japanese for "black cat", and sama is the honorific you'd give someone you hold in high regard. Put together, it's a respectful nod to a black cat.</p>
+        <p class="muted">Heroes of Lumora is made in loving memory of Kenji and Oni.</p>
+        <div class="btns"><a class="btn ghost" href="/about/">About the studio</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap panel cta">
+      <Image src={mark} alt="" width={120} />
+      <div>
+        <h2>Press, creators and partners</h2>
+        <p class="muted">Logos, key art, screenshots and fact sheets are in the press kit, free to use in coverage.</p>
+      </div>
+      <div class="btns" style="margin:0"><a class="btn alt" href="/press/">Press kit</a><a class="btn ghost" href="/contact/">Get in touch</a></div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { position: relative; padding: 0; min-height: min(78vh, 760px); display: flex; align-items: flex-end; overflow: hidden; border-bottom: 1px solid var(--line); }
+  .hero :global(.hero-bg) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; image-rendering: pixelated; }
+  .hero-fade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,7,25,.1) 0%, rgba(15,7,25,.55) 45%, rgba(15,7,25,.96) 100%), linear-gradient(90deg, rgba(15,7,25,.85), transparent 70%); }
+  .hero-inner { position: relative; padding-top: 120px; padding-bottom: 72px; width: 100%; }
+  .hero :global(.hol-logo) { width: min(520px, 80vw); margin: 4px 0 18px; image-rendering: pixelated; filter: drop-shadow(0 6px 18px rgba(0,0,0,.6)); }
+  .hero .lede { color: #ddd6ec; max-width: 58ch; }
+  .card { display: flex; flex-direction: column; overflow: hidden; text-decoration: none; color: var(--ink); transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
+  .card:hover { transform: translateY(-3px); border-color: var(--cy); box-shadow: 0 0 30px rgba(53,240,255,.15); color: var(--ink); }
+  .card :global(img) { width: 100%; aspect-ratio: 920/430; object-fit: cover; image-rendering: pixelated; }
+  .card-body { padding: 20px 22px 24px; }
+  .card-art { aspect-ratio: 920/430; display: grid; place-items: center; }
+  .card-art.alden { background: radial-gradient(circle at 50% 120%, rgba(255,59,216,.35), transparent 60%), radial-gradient(circle at 50% -30%, rgba(53,240,255,.25), transparent 55%), var(--bg-2); text-align: center; align-content: center; }
+  .card-art.alden span { font-family: var(--display); font-weight: 700; font-size: 1.8rem; letter-spacing: .28em; color: #fff; text-shadow: 0 0 18px rgba(53,240,255,.6); }
+  .card-art.alden small { font-family: var(--display); letter-spacing: .5em; color: var(--mg); }
+  .card-art.book { background: linear-gradient(160deg, #0c2a3a, #081723); }
+  .card-art.book :global(img) { width: 28%; height: auto; aspect-ratio: auto; image-rendering: auto; box-shadow: 0 8px 24px rgba(0,0,0,.6); }
+  .split { align-items: center; }
+  .split :global(.shot) { border-radius: var(--r); border: 1px solid var(--line); image-rendering: pixelated; }
+  .cta { display: grid; grid-template-columns: auto 1fr auto; gap: 28px; align-items: center; padding: 32px; }
+  .cta h2 { margin-bottom: .3em; }
+  .cta p { margin: 0; }
+  @media (max-width: 900px) { .cta { grid-template-columns: 1fr; } }
+</style>
