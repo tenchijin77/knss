@@ -20,7 +20,6 @@ export const books: Book[] = [
     urlLabel: "Get it on Amazon",
   },
   {
-    // TODO(Ross): confirm this one should be listed publicly, and the wording.
     slug: "the-lost-art-of-being-an-asshole",
     title: "The Lost Art of Being an Asshole",
     status: "in-progress",
