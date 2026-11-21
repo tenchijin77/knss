@@ -26,8 +26,7 @@ export const books: Book[] = [
     status: "available",
     blurb:
       "Truth, boundaries and Stoic thinking for modern life.",
-    // TODO: replace with the book's direct Amazon link (amazon.com/dp/...) once Ross sends it.
-    url: "https://www.amazon.com/s?k=The+Lost+Art+of+Being+an+Asshole+Ross+Wilkinson",
-    urlLabel: "Find it on Amazon",
+    url: "https://www.amazon.com/dp/B0FW6N9NS5",
+    urlLabel: "Get it on Amazon",
   },
 ];
