@@ -23,8 +23,11 @@ export const books: Book[] = [
     slug: "the-lost-art-of-being-an-asshole",
     title: "The Lost Art of Being an Asshole",
     subtitle: "Truth and Stoicism in Modern Times",
-    status: "in-progress",
+    status: "available",
     blurb:
-      "Truth, boundaries and Stoic thinking for modern life. Currently being expanded for its print edition; details when it's ready.",
+      "Truth, boundaries and Stoic thinking for modern life.",
+    // TODO: replace with the book's direct Amazon link (amazon.com/dp/...) once Ross sends it.
+    url: "https://www.amazon.com/s?k=The+Lost+Art+of+Being+an+Asshole+Ross+Wilkinson",
+    urlLabel: "Find it on Amazon",
   },
 ];
