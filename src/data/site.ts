@@ -7,8 +7,8 @@ export const site = {
   region: "NV",
   description:
     "Kuro Neko Sama Studios is a one-person indie studio in Las Vegas making games and books: Heroes of Lumora, Aldenexia: Lightfall, and Zen Divers.",
-  // TODO(Ross): create this mailbox on Stalwart before launch, or change it.
-  email: "hello@kuronekosamastudios.com",
+  // Temporary: studio mail goes to NCT until a kuronekosamastudios.com mailbox exists.
+  email: "info@nctlv.org",
   // Fill these in when the pages exist; empty = "coming soon" buttons.
   links: {
     steamHol: "",
