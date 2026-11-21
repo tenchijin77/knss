@@ -14,7 +14,7 @@ export const site = {
     steamHol: "",
     itchHol: "",
     youtube: "",
-    discord: "",
+    discord: "https://discord.gg/KuXZUv5cE",
   },
 };
 

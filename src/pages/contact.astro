@@ -13,6 +13,7 @@ const reasons = [
     <span class="eyebrow">Contact</span>
     <h1>Get in touch</h1>
     <p>Email is the best way to reach the studio: <a href={`mailto:${site.email}`}>{site.email}</a></p>
+    {site.links.discord && <div class="btns"><a class="btn primary" href={site.links.discord} rel="noopener">Join the Discord</a></div>}
   </div>
   <section class="tight">
     <div class="wrap grid-2">
