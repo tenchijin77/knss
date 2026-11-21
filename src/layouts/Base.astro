@@ -1,6 +1,9 @@
 ---
 import "../styles/global.css";
 import { site, nav } from "../data/site";
+import { Image } from "astro:assets";
+import logoH from "../assets/brand/kns-logo-horizontal.png";
+import markImg from "../assets/brand/kns-mark.png";
 
 interface Props {
   title?: string;
@@ -9,7 +12,7 @@ interface Props {
   ogImage?: string;
   noindex?: boolean;
 }
-const { title, description: rawDesc = site.description, jsonLd, ogImage = "/og.png", noindex = false } = Astro.props;
+const { title, description: rawDesc = site.description, jsonLd, ogImage = "/og.jpg", noindex = false } = Astro.props;
 const description = rawDesc.length > 158 ? rawDesc.slice(0, 155).replace(/\s+\S*$/, "") + "…" : rawDesc;
 const fullTitle = title ? `${title} | ${site.name}` : `${site.name} | Indie Games & Books`;
 const canonical = new URL(Astro.url.pathname, site.url).href;
@@ -20,7 +23,7 @@ const org = {
   "@id": `${site.url}/#org`,
   name: site.name,
   url: site.url,
-  logo: `${site.url}/kns-studios-mark-flat.svg`,
+  logo: `${site.url}/icon-192.png`,
   founder: { "@type": "Person", name: site.founder },
   email: site.email,
   address: { "@type": "PostalAddress", addressLocality: site.city, addressRegion: site.region, addressCountry: "US" },
@@ -37,7 +40,6 @@ const year = new Date().getFullYear();
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     {noindex && <meta name="robots" content="noindex" />}
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon-32.png" sizes="32x32" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="theme-color" content="#0f0719" />
@@ -56,7 +58,7 @@ const year = new Date().getFullYear();
     <header class="site-header">
       <div class="wrap bar">
         <a href="/" class="logo" aria-label={`${site.name} home`}>
-          <img src="/kns-studios-logo-horizontal-glow.svg" alt={site.name} width="240" height="52" />
+          <Image src={logoH} alt={site.name} height={120} loading="eager" />
         </a>
         <nav aria-label="Main">
           <ul>
@@ -79,7 +81,7 @@ const year = new Date().getFullYear();
       <div class="wrap">
         <div class="foot">
           <div>
-            <img src="/kns-studios-mark-glow.svg" alt="" width="64" height="64" />
+            <Image src={markImg} alt="" width={160} />
             <p style="margin-top:12px">Games and books, made by hand in {site.city}.</p>
           </div>
           <ul>
