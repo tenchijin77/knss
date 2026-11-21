@@ -12,7 +12,7 @@ export const site = {
   // Fill these in when the pages exist; empty = "coming soon" buttons.
   links: {
     steamHol: "",
-    itchHol: "",
+    itchHol: "https://tenchijin.itch.io/heroes-of-lumora",
     youtube: "",
     discord: "https://discord.gg/YAW5sPf8jW",
   },
