@@ -4,8 +4,9 @@ import { Image } from "astro:assets";
 import { books } from "../data/books";
 import { site } from "../data/site";
 import cover from "../assets/brand/zen-divers-book-cover.jpg";
+import lostArt from "../assets/brand/lost-art-cover.jpg";
 
-const covers: Record<string, ImageMetadata> = { "zen-divers": cover };
+const covers: Record<string, ImageMetadata> = { "zen-divers": cover, "the-lost-art-of-being-an-asshole": lostArt };
 const ld = books.filter((b) => b.status === "available").map((b) => ({
   "@context": "https://schema.org",
   "@type": "Book",

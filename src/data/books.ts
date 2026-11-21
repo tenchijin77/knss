@@ -22,8 +22,9 @@ export const books: Book[] = [
   {
     slug: "the-lost-art-of-being-an-asshole",
     title: "The Lost Art of Being an Asshole",
+    subtitle: "Truth and Stoicism in Modern Times",
     status: "in-progress",
     blurb:
-      "Currently being expanded for its print edition. Details when it's ready.",
+      "Truth, boundaries and Stoic thinking for modern life. Currently being expanded for its print edition; details when it's ready.",
   },
 ];
