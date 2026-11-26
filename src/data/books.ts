@@ -15,7 +15,7 @@ export const books: Book[] = [
     subtitle: "Skills · Focus · Control · Performance",
     status: "available",
     blurb:
-      "My field guide to advanced scuba skills: buoyancy, trim, propulsion, and the calm, deliberate habits that keep you safe and in control underwater. It's what I teach my students, written down.",
+      "Ross's field guide to advanced scuba skills: buoyancy, trim, propulsion, and the calm, deliberate habits that keep you safe and in control underwater. It's what he teaches his students, written down.",
     url: "https://www.amazon.com/dp/B0FH59XXYM",
     urlLabel: "Get it on Amazon",
   },
