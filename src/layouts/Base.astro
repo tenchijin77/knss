@@ -23,6 +23,7 @@ const org = {
   name: site.name,
   url: site.url,
   logo: `${site.url}/icon-192.png`,
+  founder: { "@type": "Person", name: "Ross" },
   email: site.email,
 };
 const ld = [org, ...(jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [])];
