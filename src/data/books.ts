@@ -15,7 +15,7 @@ export const books: Book[] = [
     subtitle: "Skills · Focus · Control · Performance",
     status: "available",
     blurb:
-      "A field guide to advanced scuba skills from a PADI Master Scuba Diver Trainer: buoyancy, trim, propulsion and the calm, deliberate habits that make a diver safe and in control underwater.",
+      "My field guide to advanced scuba skills: buoyancy, trim, propulsion, and the calm, deliberate habits that keep you safe and in control underwater. It's what I teach my students, written down.",
     url: "https://www.amazon.com/dp/B0FH59XXYM",
     urlLabel: "Get it on Amazon",
   },

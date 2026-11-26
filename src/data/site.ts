@@ -6,7 +6,7 @@ export const site = {
   city: "Las Vegas",
   region: "NV",
   description:
-    "Kuro Neko Sama Studios is a one-person indie studio in Las Vegas making games and books: Heroes of Lumora, Aldenexia: Lightfall, and Zen Divers.",
+    "Kuro Neko Sama Studios is Ross Wilkinson's indie game and book studio in Las Vegas: Heroes of Lumora, Aldenexia: Lightfall and Zen Divers.",
   // Temporary: studio mail goes to NCT until a kuronekosamastudios.com mailbox exists.
   email: "info@nctlv.org",
   // Fill these in when the pages exist; empty = "coming soon" buttons.
