@@ -23,9 +23,7 @@ const org = {
   name: site.name,
   url: site.url,
   logo: `${site.url}/icon-192.png`,
-  founder: { "@type": "Person", name: site.founder },
   email: site.email,
-  address: { "@type": "PostalAddress", addressLocality: site.city, addressRegion: site.region, addressCountry: "US" },
 };
 const ld = [org, ...(jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [])];
 const year = new Date().getFullYear();
@@ -84,7 +82,7 @@ const year = new Date().getFullYear();
         <div class="foot">
           <div>
             <Image src={markImg} alt="" width={160} />
-            <p style="margin-top:12px">Games and books, made in {site.city}.</p>
+            <p style="margin-top:12px">Indie games and books.</p>
           </div>
           <ul>
             <li><h4>Games</h4></li>
@@ -102,7 +100,7 @@ const year = new Date().getFullYear();
             <li><a href="/privacy/">Privacy</a></li>
           </ul>
         </div>
-        <p class="legal">© {year} Ross Wilkinson / {site.name}. All rights reserved.</p>
+        <p class="legal">© {year} {site.name}. All rights reserved.</p>
       </div>
     </footer>
   </body>

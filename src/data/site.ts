@@ -2,11 +2,8 @@ export const site = {
   name: "Kuro Neko Sama Studios",
   short: "KNS Studios",
   url: "https://kuronekosamastudios.com",
-  founder: "Ross Wilkinson",
-  city: "Las Vegas",
-  region: "NV",
   description:
-    "Kuro Neko Sama Studios is Ross Wilkinson's indie game and book studio in Las Vegas: Heroes of Lumora, Aldenexia: Lightfall and Zen Divers.",
+    "Kuro Neko Sama Studios is an indie game and book studio: Heroes of Lumora, Aldenexia: Lightfall and Zen Divers.",
   // Temporary: studio mail goes to NCT until a kuronekosamastudios.com mailbox exists.
   email: "info@nctlv.org",
   // Fill these in when the pages exist; empty = "coming soon" buttons.

@@ -25,7 +25,7 @@ const world = [
     <div class="hero-fade"></div>
     <div class="wrap hero-inner">
       <h1 class="fire-title"><span>Kuro Neko Sama</span><span class="sub">Studios</span></h1>
-      <p class="tagline">Indie games and books, made by Ross Wilkinson in Las Vegas.</p>
+      <p class="tagline">Indie games and books.</p>
       <a class="scroll" href={site.links.itchHol} rel="noopener">Heroes of Lumora: Free Demo Out Now</a>
     </div>
   </section>
@@ -40,7 +40,7 @@ const world = [
           <li><strong><a href="/games/aldenexia-lightfall/">Aldenexia: Lightfall</a></strong>: in closed testing. We're bringing in new models for the characters and creatures and building out more of the world.</li>
           <li><strong><a href="/books/">Books</a></strong>: <em>Zen Divers</em> and <em>The Lost Art of Being an Asshole</em> are both out on Amazon.</li>
         </ul>
-        <div class="btns">{site.links.discord && <a class="btn primary" href={site.links.discord} rel="noopener">Follow along on Discord</a>}<a class="btn ghost" href="/about/">About Ross</a></div>
+        <div class="btns">{site.links.discord && <a class="btn primary" href={site.links.discord} rel="noopener">Follow along on Discord</a>}<a class="btn ghost" href="/about/">About us</a></div>
       </div>
     </div>
   </section>
@@ -104,17 +104,17 @@ const world = [
 <style>
   .hero { position: relative; padding: 0; min-height: min(88vh, 820px); display: flex; align-items: flex-start; overflow: hidden; background: var(--night); }
   .hero :global(.hero-bg) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 70%; }
-  .hero-fade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(30,19,11,.55) 0%, rgba(30,19,11,.05) 45%, rgba(30,19,11,.15) 80%, rgba(30,19,11,.7) 100%); }
+  .hero-fade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(12,14,30,.55) 0%, rgba(12,14,30,.05) 45%, rgba(12,14,30,.15) 80%, rgba(12,14,30,.7) 100%); }
   .hero-inner { position: relative; padding-top: clamp(48px, 9vh, 110px); padding-bottom: 60px; width: 100%; text-align: center; }
   .hero h1 { font-size: clamp(2.8rem, 8.6vw, 7rem); margin: 0 0 .35em; }
   .hero h1 span { display: block; }
   .hero h1 .sub { font-size: .55em; letter-spacing: .32em; margin-top: .12em; }
-  .tagline { margin: -6px auto 26px; color: #f1e3cc; font-size: 1.15rem; text-shadow: 0 2px 8px rgba(0,0,0,.8); }
+  .tagline { margin: -6px auto 26px; color: #e4e6f2; font-size: 1.15rem; text-shadow: 0 2px 8px rgba(0,0,0,.8); }
 
   .split { align-items: center; }
-  .framed, .split :global(.shot) { border: 1px solid #6b4a2b; padding: 6px; background: var(--panel); box-shadow: 0 8px 22px rgba(60, 40, 20, .25); image-rendering: pixelated; }
+  .framed, .split :global(.shot) { border: 1px solid var(--frame); padding: 6px; background: var(--panel); box-shadow: 0 8px 22px rgba(60, 40, 20, .25); image-rendering: pixelated; }
   .now { list-style: none; padding: 0; margin: 0 0 .5em; display: grid; gap: 16px; }
-  .now li { padding-left: 18px; border-left: 3px solid var(--wood); color: var(--muted); font-size: 1.1rem; }
+  .now li { padding-left: 18px; border-left: 3px solid var(--teal); color: var(--muted); font-size: 1.1rem; }
   .now strong a { color: var(--ink); text-decoration: none; font-size: 1.15em; }
   .now strong a:hover { color: var(--cy); }
 
@@ -131,8 +131,8 @@ const world = [
   .world { padding-top: 64px; }
   .sketches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
   .sketch { text-decoration: none; color: var(--ink); text-align: center; }
-  .frame { display: block; border: 1px solid #6b4a2b; padding: 0; overflow: hidden; aspect-ratio: 1; background: #d6cbb8; }
-  .frame :global(img) { width: 100%; height: 100%; object-fit: cover; filter: sepia(.85) saturate(.6) contrast(1.05) brightness(1.05); mix-blend-mode: multiply; transition: filter .35s ease, transform .35s ease; }
+  .frame { display: block; border: 1px solid var(--frame); padding: 0; overflow: hidden; aspect-ratio: 1; background: #6d6992; }
+  .frame :global(img) { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.1) brightness(1.1); mix-blend-mode: luminosity; transition: filter .35s ease, transform .35s ease; }
   .sketch:hover .frame :global(img) { filter: none; mix-blend-mode: normal; transform: scale(1.04); }
   .cap { display: block; font-family: var(--serif); font-size: 1.5rem; margin-top: 8px; }
   .sketch:hover .cap { color: var(--cy); }

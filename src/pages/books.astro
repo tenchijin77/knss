@@ -11,16 +11,15 @@ const ld = books.filter((b) => b.status === "available").map((b) => ({
   "@context": "https://schema.org",
   "@type": "Book",
   name: b.title,
-  author: { "@type": "Person", name: site.founder },
   publisher: { "@id": `${site.url}/#org` },
   url: b.url,
 }));
 ---
-<Base title="Books" description="Books from Kuro Neko Sama Studios by Ross Wilkinson, including Zen Divers, a field guide to advanced scuba skills." jsonLd={ld}>
+<Base title="Books" description="Books from Kuro Neko Sama Studios, including Zen Divers, a field guide to advanced scuba skills." jsonLd={ld}>
   <div class="wrap page-hero">
     <span class="eyebrow">Books</span>
     <h1>Books</h1>
-    <p>Ross Wilkinson's books, published under the Kuro Neko Sama Studios name. Both are on Amazon.</p>
+    <p>Books published under the Kuro Neko Sama Studios name. Both are on Amazon.</p>
   </div>
   <section class="tight">
     <div class="wrap">
