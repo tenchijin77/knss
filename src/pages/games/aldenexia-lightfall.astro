@@ -2,9 +2,11 @@
 import Base from "../../layouts/Base.astro";
 import { site } from "../../data/site";
 import { Image } from "astro:assets";
-import heroImg from "../../assets/alden/monk_kick_troll_staggers.png";
-import act1 from "../../assets/alden/arcanist_fireball_sandshifter_burning.png";
-import act2 from "../../assets/alden/arcanist_fireball_in_flight.png";
+import heroImg from "../../assets/alden/gold_dragon_sunspire_peaks_wide.jpg";
+import act1 from "../../assets/alden/storm_giants_isle_of_lost_souls.jpg";
+import act2 from "../../assets/alden/gale_wyvern_stormbreak_highlands.jpg";
+import act3 from "../../assets/alden/troll_charges_fire_giant_burning_scar.jpg";
+import act4 from "../../assets/alden/night_fireball_bandit_camp.jpg";
 import z1 from "../../assets/alden/01_kordava_1.jpg";
 import z2 from "../../assets/alden/03_ixtamar_beachhead_1.jpg";
 import z3 from "../../assets/alden/10_lumora_cisterns_1.jpg";
@@ -63,8 +65,10 @@ const ld = {
   <section class="tight">
     <div class="wrap">
       <div class="action">
-        <figure><Image src={act1} alt="An Arcanist's fireball sets a sandshifter alight at dusk" widths={[640, 1280]} sizes="(max-width: 900px) 100vw, 560px" /><figcaption>Arcanist vs. sandshifter</figcaption></figure>
-        <figure><Image src={act2} alt="A fireball in flight toward a sandshifter" widths={[640, 1280]} sizes="(max-width: 900px) 100vw, 560px" /><figcaption>Fireball in flight</figcaption></figure>
+        <figure><Image src={act1} alt="A party under the storm giants on the Isle of Lost Souls, a lightning bolt in flight" widths={[640, 1280]} sizes="(max-width: 900px) 100vw, 560px" /><figcaption>Storm giants, Isle of Lost Souls</figcaption></figure>
+        <figure><Image src={act2} alt="A gale wyvern on the Stormbreak Highlands meets a shield wall and a volley of ice" widths={[640, 1280]} sizes="(max-width: 900px) 100vw, 560px" /><figcaption>Gale wyvern, Stormbreak Highlands</figcaption></figure>
+        <figure><Image src={act3} alt="A troll charges a fire giant in the Burning Scar, a fireball over his shoulder" widths={[640, 1280]} sizes="(max-width: 900px) 100vw, 560px" /><figcaption>Fire giant, the Burning Scar</figcaption></figure>
+        <figure><Image src={act4} alt="A fireball at night on a bandit camp in the Lumora Outskirts" widths={[640, 1280]} sizes="(max-width: 900px) 100vw, 560px" /><figcaption>Bandit camp, Lumora Outskirts</figcaption></figure>
       </div>
     </div>
   </section>
@@ -115,7 +119,7 @@ const ld = {
 
 <style>
   .hero { position: relative; overflow: hidden; padding: 200px 0 80px; border-bottom: 1px solid var(--line); min-height: min(80vh, 760px); display: flex; align-items: flex-end; }
-  .hero :global(.hero-bg) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+  .hero :global(.hero-bg) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 85% 60%; }
   .hero .wrap { width: 100%; }
   .hero .lede { color: #e4e6f2; max-width: 60ch; }
   .action { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
