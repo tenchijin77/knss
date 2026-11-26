@@ -2,7 +2,7 @@
 import Base from "../layouts/Base.astro";
 import { Image } from "astro:assets";
 import { site } from "../data/site";
-import { races, classGroups } from "../data/aldenexia";
+import { races, classGroups, cities, zoneInfo } from "../data/aldenexia";
 const portraits = import.meta.glob<{ default: ImageMetadata }>("../assets/races/*.jpg", { eager: true });
 const pic = (slug: string, g: string) => portraits[`../assets/races/${slug}-${g}.jpg`].default;
 import heroImg from "../assets/alden/camp_at_dusk_blightmoor_wastes_wide.jpg";
@@ -24,7 +24,7 @@ const zones = [
   { src: z01, name: "Kordava", alt: "A giant beetle on the beach at Kordava" },
   { src: z03, name: "Ixtamar Beachhead", alt: "A fire golem on the lava at Ixtamar Beachhead" },
   { src: z04, name: "Warforge Expanse", alt: "A giant rat-beast on the Warforge Expanse" },
-  { src: z05, name: "Zulgoroth's Temple", alt: "A tentacled creature in the shallows of Zulgoroth's Temple" },
+  { src: z05, name: "Zulgoroth's Temple", title: "The Temple of Zhul'Goroth", alt: "A tentacled creature in the shallows of the Temple of Zhul'Goroth" },
   { src: z06, name: "Spectral Tower", alt: "The glowing crystal hall of the Spectral Tower" },
   { src: z07, name: "Sunder-Keel Shoals", alt: "Two swamp brutes wading through Sunder-Keel Shoals" },
   { src: z09, name: "Stormbreak Highlands", alt: "A crystal spirit by the blue spire in the Stormbreak Highlands" },
@@ -67,10 +67,19 @@ const zones = [
               <Image src={pic(r.slug, "male")} alt={`A male ${r.name}`} widths={[240, 400]} sizes="(max-width: 700px) 50vw, 190px" />
               <Image src={pic(r.slug, "female")} alt={`A female ${r.name}`} widths={[240, 400]} sizes="(max-width: 700px) 50vw, 190px" />
             </div>
-            <div class="body"><h3>{r.name}</h3><p class="home">Home: {r.home}</p><p>{r.text}</p></div>
+            <div class="body"><h3>{r.name}</h3><p class="home">Home: {r.home} · or Kordava</p><p>{r.text}</p></div>
           </article>
         ))}
       </div>
+    </div>
+  </section>
+
+  <div class="band" id="cities"><h2>Starting Cities</h2><p>Every race starts in its own home city, or in Kordava, the neutral trade city open to all.</p></div>
+  <section>
+    <div class="wrap cities">
+      {cities.map((c, i) => (
+        <article class={`city panel${i === 0 ? " neutral" : ""}`}><h3>{c.name}</h3><p class="home">{c.region}</p><p>{c.text}</p></article>
+      ))}
     </div>
   </section>
 
@@ -90,13 +99,13 @@ const zones = [
     </div>
   </section>
 
-  <div class="band" id="zones"><h2>Zones</h2></div>
+  <div class="band" id="zones"><h2>Zones</h2><p>A few of the places you'll go, from the starting islands to the far edges of the map.</p></div>
   <section>
     <div class="wrap zones">
       {zones.map((z) => (
         <figure>
           <span class="frame"><Image src={z.src} alt={z.alt} widths={[480, 720]} sizes="(max-width: 700px) 100vw, 360px" /></span>
-          <figcaption>{z.name}</figcaption>
+          <figcaption><strong>{(z as any).title ?? z.name}</strong><span class="lv">{zoneInfo[z.name]?.levels}</span><span class="zt">{zoneInfo[z.name]?.text}</span></figcaption>
         </figure>
       ))}
     </div>
@@ -139,6 +148,13 @@ const zones = [
   .race h3 { margin: 0 0 .3em; }
   .race p, .cls p { margin: 0; color: var(--muted); font-size: .98rem; }
   .race .home { color: var(--cy); font-weight: 700; font-size: .85rem; margin-bottom: .5em; }
+  .cities { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 18px; }
+  .city { padding: 20px 22px; border-left: 3px solid var(--cy); }
+  .city.neutral { grid-column: 1 / -1; border-left-color: var(--teal); }
+  .city h3 { margin: 0 0 .2em; }
+  .city .home { color: var(--cy); font-weight: 700; font-size: .85rem; margin-bottom: .5em; }
+  .city p { margin: 0; color: var(--muted); font-size: .98rem; max-width: none; }
+  .city p.home { margin-bottom: .5em; }
   .cgroup + .cgroup { margin-top: 34px; }
   .role { font-size: .8rem; font-family: var(--body); letter-spacing: .2em; text-transform: uppercase; color: var(--cy); margin-bottom: 12px; }
   .classes { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
@@ -149,7 +165,10 @@ const zones = [
   .zones figure { margin: 0; }
   .frame { display: block; border: 1px solid var(--frame); padding: 5px; background: var(--panel); box-shadow: 0 6px 16px rgba(60,40,20,.2); }
   .frame :global(img) { width: 100%; aspect-ratio: 12/5; object-fit: cover; }
-  figcaption { font-family: var(--serif); font-size: 1.25rem; text-align: center; margin-top: 6px; }
+  figcaption { margin-top: 8px; }
+  figcaption strong { display: block; font-family: var(--serif); font-size: 1.3rem; }
+  figcaption .lv { display: block; color: var(--cy); font-weight: 700; font-size: .82rem; margin: 2px 0 6px; }
+  figcaption .zt { display: block; color: var(--muted); font-size: .96rem; line-height: 1.5; }
   .stay { text-align: center; }
   .stay p { margin-left: auto; margin-right: auto; }
   .btns.center { justify-content: center; }
