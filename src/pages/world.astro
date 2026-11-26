@@ -1,0 +1,122 @@
+---
+import Base from "../layouts/Base.astro";
+import { Image } from "astro:assets";
+import { site } from "../data/site";
+import heroImg from "../assets/alden/arcanist_fireball_at_dusk_wide.jpg";
+import z01 from "../assets/alden/01_kordava_1.jpg";
+import z03 from "../assets/alden/03_ixtamar_beachhead_1.jpg";
+import z04 from "../assets/alden/04_warforge_expanse_1.jpg";
+import z05 from "../assets/alden/05_zulgoroths_temple_1.jpg";
+import z06 from "../assets/alden/06_spectral_tower_1.jpg";
+import z07 from "../assets/alden/07_sunder_keel_shoals_3.jpg";
+import z09 from "../assets/alden/09_stormbreak_highlands_1.jpg";
+import z10 from "../assets/alden/10_lumora_cisterns_1.jpg";
+import z11 from "../assets/alden/11_sacred_springs_1.jpg";
+import z13 from "../assets/alden/13_lunarfall_sanctum_1.jpg";
+import z14 from "../assets/alden/14_shifting_isles_1.jpg";
+import z15 from "../assets/alden/15_grimwharf_landing_2.jpg";
+import z16 from "../assets/alden/16_ashfall_dunes_2.jpg";
+
+const races = ["Human", "Elf", "Dwarf", "Gnome", "Halfling", "Half-Elf", "Ogre", "Troll", "Vol'kyne", "Half-Orc", "Lizardkin"];
+const classes = ["Voidknight", "Lightsworn", "Blademaster", "Lightmender", "Spiritweaver", "Wildspeaker", "Aetherfist", "Woodstalker", "Shadowblade", "Troubadour", "Gravecaller", "Runecaster", "Arcanist", "Chaosborne"];
+const zones = [
+  { src: z01, name: "Kordava", alt: "A giant beetle on the beach at Kordava" },
+  { src: z03, name: "Ixtamar Beachhead", alt: "A fire golem on the lava at Ixtamar Beachhead" },
+  { src: z04, name: "Warforge Expanse", alt: "A giant rat-beast on the Warforge Expanse" },
+  { src: z05, name: "Zulgoroth's Temple", alt: "A tentacled creature in the shallows of Zulgoroth's Temple" },
+  { src: z06, name: "Spectral Tower", alt: "The glowing crystal hall of the Spectral Tower" },
+  { src: z07, name: "Sunder-Keel Shoals", alt: "Two swamp brutes wading through Sunder-Keel Shoals" },
+  { src: z09, name: "Stormbreak Highlands", alt: "A crystal spirit by the blue spire in the Stormbreak Highlands" },
+  { src: z10, name: "Lumora Cisterns", alt: "A giant rat in torchlight in the Lumora Cisterns" },
+  { src: z11, name: "Sacred Springs", alt: "A black wolf among the pines at Sacred Springs" },
+  { src: z13, name: "Lunarfall Sanctum", alt: "An elemental circled by glowing orbs in the Lunarfall Sanctum" },
+  { src: z14, name: "Shifting Isles", alt: "Ruined columns on the Shifting Isles" },
+  { src: z15, name: "Grimwharf Landing", alt: "Something swimming in the turquoise shallows of Grimwharf Landing" },
+  { src: z16, name: "Ashfall Dunes", alt: "A camp around the fire in the Ashfall Dunes" },
+];
+---
+<Base
+  title="The World of Aldenexia"
+  description="Aldenexia is the world behind Heroes of Lumora and Aldenexia: Lightfall: its races, classes and zones, from Ross Wilkinson at Kuro Neko Sama Studios."
+>
+  <section class="hero">
+    <Image src={heroImg} alt="" class="hero-bg" widths={[1280, 1920, 2560]} sizes="100vw" loading="eager" fetchpriority="high" />
+    <div class="hero-fade"></div>
+    <div class="wrap hero-inner">
+      <h1 class="fire-title">Aldenexia</h1>
+      <p class="tagline">The world behind both of my games.</p>
+    </div>
+  </section>
+
+  <div class="band" id="aldenexia"><h2>Our World</h2></div>
+  <section>
+    <div class="wrap intro">
+      <p class="lede"><strong>Aldenexia</strong> is the world. <a href="/games/aldenexia-lightfall/"><strong>Aldenexia: Lightfall</strong></a> is the multiplayer RPG I'm building in it, and <strong>Lumora</strong> is one of its towns: the one you defend in <a href="/games/heroes-of-lumora/"><strong>Heroes of Lumora</strong></a>.</p>
+      <p class="muted">I've been building this world since I was fifteen. There's a lot more to it than I'm putting here yet; the story is for players to find in the game. For now, here's who lives there and some of the places you'll go.</p>
+    </div>
+  </section>
+
+  <div class="band" id="races"><h2>Races</h2></div>
+  <section>
+    <div class="wrap">
+      <ul class="plaques">{races.map((r) => <li>{r}</li>)}</ul>
+    </div>
+  </section>
+
+  <div class="band" id="classes"><h2>Classes</h2></div>
+  <section>
+    <div class="wrap">
+      <ul class="plaques">{classes.map((c) => <li>{c}</li>)}</ul>
+    </div>
+  </section>
+
+  <div class="band" id="zones"><h2>Zones</h2></div>
+  <section>
+    <div class="wrap zones">
+      {zones.map((z) => (
+        <figure>
+          <span class="frame"><Image src={z.src} alt={z.alt} widths={[480, 720]} sizes="(max-width: 700px) 100vw, 360px" /></span>
+          <figcaption>{z.name}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+
+  <section class="tight stay">
+    <div class="wrap">
+      <div class="divider"></div>
+      <h2>Want to see it for yourself?</h2>
+      <p class="muted">Heroes of Lumora's free demo is out now. Aldenexia: Lightfall is in closed testing; ask on Discord if you'd like to help.</p>
+      <div class="btns center">
+        <a class="btn primary" href={site.links.itchHol} rel="noopener">Play the demo</a>
+        {site.links.discord && <a class="btn alt" href={site.links.discord} rel="noopener">Join the Discord</a>}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { position: relative; padding: 0; min-height: min(56vh, 520px); display: flex; align-items: center; overflow: hidden; background: var(--night); }
+  .hero :global(.hero-bg) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 55%; }
+  .hero-fade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(30,19,11,.5), rgba(30,19,11,.1) 50%, rgba(30,19,11,.6)); }
+  .hero-inner { position: relative; text-align: center; width: 100%; padding: 60px 24px; }
+  .hero h1 { font-size: clamp(3rem, 9vw, 7rem); margin: 0; }
+  .tagline { margin: 12px auto 0; color: #f1e3cc; font-size: 1.25rem; text-shadow: 0 2px 8px rgba(0,0,0,.8); }
+  .intro { text-align: center; }
+  .intro p { margin-left: auto; margin-right: auto; }
+  .intro a { color: var(--ink); }
+  .plaques { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+  .plaques li {
+    text-align: center; font-family: var(--serif); font-size: 1.35rem; padding: 14px 10px;
+    background: var(--paper), linear-gradient(180deg, var(--panel), var(--panel-2));
+    border: 1px solid var(--line); box-shadow: inset 0 0 0 4px var(--panel), inset 0 0 0 5px rgba(107,74,43,.35);
+  }
+  .zones { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 22px; }
+  .zones figure { margin: 0; }
+  .frame { display: block; border: 1px solid #6b4a2b; padding: 5px; background: var(--panel); box-shadow: 0 6px 16px rgba(60,40,20,.2); }
+  .frame :global(img) { width: 100%; aspect-ratio: 12/5; object-fit: cover; }
+  figcaption { font-family: var(--serif); font-size: 1.25rem; text-align: center; margin-top: 6px; }
+  .stay { text-align: center; }
+  .stay p { margin-left: auto; margin-right: auto; }
+  .btns.center { justify-content: center; }
+</style>

@@ -2,7 +2,6 @@
 import "../styles/global.css";
 import { site, nav } from "../data/site";
 import { Image } from "astro:assets";
-import logoH from "../assets/brand/kns-logo-horizontal.png";
 import markImg from "../assets/brand/kns-mark.png";
 
 interface Props {
@@ -42,7 +41,7 @@ const year = new Date().getFullYear();
     {noindex && <meta name="robots" content="noindex" />}
     <link rel="icon" href="/favicon-32.png" sizes="32x32" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="theme-color" content="#0f0719" />
+    <meta name="theme-color" content="#1e130b" />
     <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
@@ -58,11 +57,14 @@ const year = new Date().getFullYear();
     <header class="site-header">
       <div class="wrap bar">
         <a href="/" class="logo" aria-label={`${site.name} home`}>
-          <Image src={logoH} alt={site.name} height={120} loading="eager" />
+          <Image src={markImg} alt="" height={96} loading="eager" />
+          <span class="wm"><b>Kuro Neko Sama</b><small>Studios</small></span>
         </a>
         <nav aria-label="Main">
           <ul>
+            <li><a href="/" aria-current={path === "/" ? "page" : undefined}>Home</a></li>
             {nav.map((n) => <li><a href={n.href} aria-current={path.startsWith(n.href) ? "page" : undefined}>{n.label}</a></li>)}
+            {site.links.discord && <li><a class="navbtn" href={site.links.discord} rel="noopener">Discord</a></li>}
           </ul>
         </nav>
         <details class="mobile-nav">
@@ -85,11 +87,14 @@ const year = new Date().getFullYear();
             <p style="margin-top:12px">Games and books I make in {site.city}.</p>
           </div>
           <ul>
+            <li><h4>Games</h4></li>
             <li><a href="/games/heroes-of-lumora/">Heroes of Lumora</a></li>
             <li><a href="/games/aldenexia-lightfall/">Aldenexia: Lightfall</a></li>
+            <li><a href="/world/">The world of Aldenexia</a></li>
             <li><a href="/books/">Books</a></li>
           </ul>
           <ul>
+            <li><h4>Studio</h4></li>
             <li><a href="/press/">Press kit</a></li>
             <li><a href="/about/">About</a></li>
             <li><a href="/contact/">Contact</a></li>

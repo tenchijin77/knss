@@ -1,74 +1,40 @@
 ---
 import Base from "../layouts/Base.astro";
 import { Image } from "astro:assets";
-import StoreButtons from "../components/StoreButtons.astro";
-import hero from "../assets/hol/library_hero_3840x1240.png";
-import holLogo from "../assets/hol/library_logo_1280x720.png";
+import campfire from "../assets/alden/menu_campfire.jpg";
 import holCapsule from "../assets/hol/header_capsule_920x430.png";
 import shot from "../assets/hol/02_mhorzath_total_eclipse.png";
 import aldenImg from "../assets/alden/monk_kick_troll_staggers.png";
+import racesImg from "../assets/alden/monk_kick_troll_staggers.png";
+import classesImg from "../assets/alden/arcanist_fireball_at_dusk_wide.jpg";
+import worldImg from "../assets/alden/09_stormbreak_highlands_1.jpg";
+import zonesImg from "../assets/alden/01_kordava_1.jpg";
 import cover from "../assets/brand/zen-divers-book-cover.jpg";
-import mark from "../assets/brand/kns-mark.png";
 import { site } from "../data/site";
+
+const world = [
+  { href: "/world/#races", label: "Races", src: racesImg, alt: "A monk's kick staggers a troll", pos: "center 60%" },
+  { href: "/world/#classes", label: "Classes", src: classesImg, alt: "An arcanist's fireball at dusk", pos: "26% 62%" },
+  { href: "/world/#aldenexia", label: "Aldenexia", src: worldImg, alt: "A crystal spirit by the blue spire of the Stormbreak Highlands", pos: "center" },
+  { href: "/world/#zones", label: "Zones", src: zonesImg, alt: "A giant beetle on the beach at Kordava", pos: "center" },
+];
 ---
 <Base description={site.description}>
   <section class="hero">
-    <Image src={hero} alt="" class="hero-bg" widths={[1280, 1920, 2880]} sizes="100vw" loading="eager" fetchpriority="high" />
+    <Image src={campfire} alt="" class="hero-bg" widths={[1280, 1920, 2560]} sizes="100vw" loading="eager" fetchpriority="high" />
     <div class="hero-fade"></div>
     <div class="wrap hero-inner">
-      <span class="eyebrow">Now in development · Heroes of Lumora</span>
-      <Image src={holLogo} alt="Heroes of Lumora" width={560} class="hol-logo" loading="eager" />
-      <p class="lede">At dawn, the gates of Lumora shatter. Hold the line in a medieval fantasy bullet-hell: rescue the townsfolk, build your hero one level-up at a time, and face the Eclipsed One as the sun goes dark.</p>
-      <StoreButtons>
-        <a class="btn primary" href="/games/heroes-of-lumora/">See the game</a>
-      </StoreButtons>
+      <h1 class="fire-title"><span>Kuro Neko Sama</span><span class="sub">Studios</span></h1>
+      <p class="tagline">Indie games and books, made by Ross Wilkinson in Las Vegas.</p>
+      <a class="scroll" href={site.links.itchHol} rel="noopener">Heroes of Lumora: Free Demo Out Now</a>
     </div>
   </section>
 
-  <section>
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow mg">The work</span>
-        <h2>The games I build and the books I write.</h2>
-        <p class="lede">I'm Ross. I design and code the games and write the books myself, here in Las Vegas.</p>
-      </div>
-      <div class="grid-3">
-        <a class="card panel" href="/games/heroes-of-lumora/">
-          <Image src={holCapsule} alt="Heroes of Lumora key art" width={600} />
-          <div class="card-body">
-            <div class="tags"><span class="tag cy">Game</span><span class="tag">Coming to Steam</span></div>
-            <h3>Heroes of Lumora</h3>
-            <p class="muted">A fantasy bullet-hell. Five heroes, six endless zones and a 30-minute siege of the town.</p>
-          </div>
-        </a>
-        <a class="card panel" href="/games/aldenexia-lightfall/">
-          <Image src={aldenImg} alt="Aldenexia: Lightfall, a monk's kick staggers a troll" width={600} class="alden-img" />
-          <div class="card-body">
-            <div class="tags"><span class="tag mg">Game</span><span class="tag">In development</span></div>
-            <h3>Aldenexia: Lightfall</h3>
-            <p class="muted">A multiplayer fantasy RPG on a persistent world, built for getting lost in.</p>
-          </div>
-        </a>
-        <a class="card panel" href="/books/">
-          <div class="card-art book"><Image src={cover} alt="Zen Divers book cover" width={260} /></div>
-          <div class="card-body">
-            <div class="tags"><span class="tag cy">Book</span><span class="tag">Available now</span></div>
-            <h3>Zen Divers</h3>
-            <p class="muted">My field guide to advanced scuba skills, from years of teaching divers.</p>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
+  <div class="band"><h2>What I'm Working On</h2></div>
   <section>
     <div class="wrap grid-2 split">
-      <Image src={shot} alt="Mh'orzath's Total Eclipse boss phase in Heroes of Lumora" widths={[640, 960, 1280]} sizes="(max-width: 900px) 100vw, 560px" class="shot" />
+      <Image src={shot} alt="Mh'orzath's Total Eclipse boss phase in Heroes of Lumora" widths={[640, 960, 1280]} sizes="(max-width: 900px) 100vw, 560px" class="shot framed" />
       <div>
-        <span class="eyebrow">Right now</span>
-        <h2>What I'm working on.</h2>
         <ul class="now">
           <li><strong><a href="/games/heroes-of-lumora/">Heroes of Lumora</a></strong>: the free demo is out on itch.io, and I'm getting the Steam page ready and polishing for launch.</li>
           <li><strong><a href="/games/aldenexia-lightfall/">Aldenexia: Lightfall</a></strong>: in closed testing. I'm bringing in new models for the characters and creatures and building out more of the world.</li>
@@ -79,44 +45,100 @@ import { site } from "../data/site";
     </div>
   </section>
 
-  <section class="tight">
-    <div class="wrap panel cta">
-      <Image src={mark} alt="" width={120} />
-      <div>
-        <h2>Press, creators and partners</h2>
-        <p class="muted">Logos, key art, screenshots and fact sheets are in the press kit, free to use. If you're covering one of my games, I'd love to hear from you.</p>
+  <div class="band"><h2>Games &amp; Books</h2></div>
+  <section>
+    <div class="wrap grid-3">
+      <a class="card panel" href="/games/heroes-of-lumora/">
+        <Image src={holCapsule} alt="Heroes of Lumora key art" width={600} class="px" />
+        <div class="card-body">
+          <div class="tags"><span class="tag cy">Game</span><span class="tag">Free demo on itch.io</span></div>
+          <h3>Heroes of Lumora</h3>
+          <p class="muted">A fantasy bullet-hell. Five heroes, six endless zones and a 30-minute siege of the town.</p>
+        </div>
+      </a>
+      <a class="card panel" href="/games/aldenexia-lightfall/">
+        <Image src={aldenImg} alt="Aldenexia: Lightfall, a monk's kick staggers a troll" width={600} class="alden-img" />
+        <div class="card-body">
+          <div class="tags"><span class="tag mg">Game</span><span class="tag">In development</span></div>
+          <h3>Aldenexia: Lightfall</h3>
+          <p class="muted">A multiplayer fantasy RPG on a persistent world, built for getting lost in.</p>
+        </div>
+      </a>
+      <a class="card panel" href="/books/">
+        <div class="card-art book"><Image src={cover} alt="Zen Divers book cover" width={260} /></div>
+        <div class="card-body">
+          <div class="tags"><span class="tag cy">Books</span><span class="tag">Available now</span></div>
+          <h3>Zen Divers &amp; more</h3>
+          <p class="muted">My field guide to advanced scuba skills, and a book on truth and Stoicism.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <div class="band"><h2>The World of Aldenexia</h2><p>One world, two games. Heroes of Lumora defends one of its towns; Aldenexia: Lightfall lets you wander the rest.</p></div>
+  <section class="world">
+    <div class="wrap sketches">
+      {world.map((w) => (
+        <a class="sketch" href={w.href}>
+          <span class="frame"><Image src={w.src} alt={w.alt} width={520} style={`object-position:${w.pos}`} /></span>
+          <span class="cap">{w.label}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="tight stay">
+    <div class="wrap">
+      <div class="divider"></div>
+      <h2>Stay Updated</h2>
+      <p class="muted">Play the free demo, join the Discord for devlogs and playtests, or grab logos and screenshots from the press kit.</p>
+      <div class="btns center">
+        <a class="btn primary" href={site.links.itchHol} rel="noopener">Play the demo</a>
+        {site.links.discord && <a class="btn alt" href={site.links.discord} rel="noopener">Join the Discord</a>}
+        <a class="btn ghost" href="/press/">Press kit</a>
       </div>
-      <div class="btns" style="margin:0"><a class="btn alt" href="/press/">Press kit</a><a class="btn ghost" href="/contact/">Get in touch</a></div>
     </div>
   </section>
 </Base>
 
 <style>
-  .hero { position: relative; padding: 0; min-height: min(78vh, 760px); display: flex; align-items: flex-end; overflow: hidden; border-bottom: 1px solid var(--line); }
-  .hero :global(.hero-bg) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; image-rendering: pixelated; }
-  .hero-fade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,7,25,.1) 0%, rgba(15,7,25,.55) 45%, rgba(15,7,25,.96) 100%), linear-gradient(90deg, rgba(15,7,25,.85), transparent 70%); }
-  .hero-inner { position: relative; padding-top: 120px; padding-bottom: 72px; width: 100%; }
-  .hero :global(.hol-logo) { width: min(520px, 80vw); margin: 4px 0 18px; image-rendering: pixelated; filter: drop-shadow(0 6px 18px rgba(0,0,0,.6)); }
-  .hero .lede { color: #ddd6ec; max-width: 58ch; }
-  .card { display: flex; flex-direction: column; overflow: hidden; text-decoration: none; color: var(--ink); transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
-  .card:hover { transform: translateY(-3px); border-color: var(--cy); box-shadow: 0 0 30px rgba(53,240,255,.15); color: var(--ink); }
-  .card :global(img) { width: 100%; aspect-ratio: 920/430; object-fit: cover; image-rendering: pixelated; }
-  .card :global(.alden-img) { image-rendering: auto; object-position: center 60%; }
-  .card-body { padding: 20px 22px 24px; }
-  .card-art { aspect-ratio: 920/430; display: grid; place-items: center; }
-  .card-art.alden { background: radial-gradient(circle at 50% 120%, rgba(255,59,216,.35), transparent 60%), radial-gradient(circle at 50% -30%, rgba(53,240,255,.25), transparent 55%), var(--bg-2); text-align: center; align-content: center; }
-  .card-art.alden span { font-family: var(--display); font-weight: 700; font-size: 1.8rem; letter-spacing: .28em; color: #fff; text-shadow: 0 0 18px rgba(53,240,255,.6); }
-  .card-art.alden small { font-family: var(--display); letter-spacing: .5em; color: var(--mg); }
-  .card-art.book { background: linear-gradient(160deg, #0c2a3a, #081723); }
-  .card-art.book :global(img) { width: 28%; height: auto; aspect-ratio: auto; image-rendering: auto; box-shadow: 0 8px 24px rgba(0,0,0,.6); }
+  .hero { position: relative; padding: 0; min-height: min(88vh, 820px); display: flex; align-items: flex-start; overflow: hidden; background: var(--night); }
+  .hero :global(.hero-bg) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 70%; }
+  .hero-fade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(30,19,11,.55) 0%, rgba(30,19,11,.05) 45%, rgba(30,19,11,.15) 80%, rgba(30,19,11,.7) 100%); }
+  .hero-inner { position: relative; padding-top: clamp(48px, 9vh, 110px); padding-bottom: 60px; width: 100%; text-align: center; }
+  .hero h1 { font-size: clamp(2.8rem, 8.6vw, 7rem); margin: 0 0 .35em; }
+  .hero h1 span { display: block; }
+  .hero h1 .sub { font-size: .55em; letter-spacing: .32em; margin-top: .12em; }
+  .tagline { margin: -6px auto 26px; color: #f1e3cc; font-size: 1.15rem; text-shadow: 0 2px 8px rgba(0,0,0,.8); }
+
   .split { align-items: center; }
-  .now { list-style: none; padding: 0; margin: 0 0 .5em; display: grid; gap: 14px; }
-  .now li { padding-left: 16px; border-left: 2px solid var(--mg); color: var(--muted); }
-  .now strong a { color: var(--ink); text-decoration: none; }
+  .framed, .split :global(.shot) { border: 1px solid #6b4a2b; padding: 6px; background: var(--panel); box-shadow: 0 8px 22px rgba(60, 40, 20, .25); image-rendering: pixelated; }
+  .now { list-style: none; padding: 0; margin: 0 0 .5em; display: grid; gap: 16px; }
+  .now li { padding-left: 18px; border-left: 3px solid var(--wood); color: var(--muted); font-size: 1.1rem; }
+  .now strong a { color: var(--ink); text-decoration: none; font-size: 1.15em; }
   .now strong a:hover { color: var(--cy); }
-  .split :global(.shot) { border-radius: var(--r); border: 1px solid var(--line); image-rendering: pixelated; }
-  .cta { display: grid; grid-template-columns: auto 1fr auto; gap: 28px; align-items: center; padding: 32px; }
-  .cta h2 { margin-bottom: .3em; }
-  .cta p { margin: 0; }
-  @media (max-width: 900px) { .cta { grid-template-columns: 1fr; } }
+
+  .card { display: flex; flex-direction: column; overflow: hidden; text-decoration: none; color: var(--ink); transition: transform .2s ease, box-shadow .2s ease; }
+  .card:hover { transform: translateY(-3px); color: var(--ink); box-shadow: 0 10px 26px rgba(60, 40, 20, .25); }
+  .card :global(img) { width: 100%; aspect-ratio: 920/430; object-fit: cover; border-bottom: 1px solid var(--line); }
+  .card :global(.px) { image-rendering: pixelated; }
+  .card :global(.alden-img) { object-position: center 60%; }
+  .card-body { padding: 18px 22px 22px; }
+  .card-art { aspect-ratio: 920/430; display: grid; place-items: center; border-bottom: 1px solid var(--line); }
+  .card-art.book { background: linear-gradient(160deg, #0c2a3a, #081723); }
+  .card-art.book :global(img) { width: 28%; height: auto; aspect-ratio: auto; border: 0; box-shadow: 0 8px 24px rgba(0,0,0,.6); }
+
+  .world { padding-top: 64px; }
+  .sketches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  .sketch { text-decoration: none; color: var(--ink); text-align: center; }
+  .frame { display: block; border: 1px solid #6b4a2b; padding: 0; overflow: hidden; aspect-ratio: 1; background: #d6cbb8; }
+  .frame :global(img) { width: 100%; height: 100%; object-fit: cover; filter: sepia(.85) saturate(.6) contrast(1.05) brightness(1.05); mix-blend-mode: multiply; transition: filter .35s ease, transform .35s ease; }
+  .sketch:hover .frame :global(img) { filter: none; mix-blend-mode: normal; transform: scale(1.04); }
+  .cap { display: block; font-family: var(--serif); font-size: 1.5rem; margin-top: 8px; }
+  .sketch:hover .cap { color: var(--cy); }
+  @media (max-width: 900px) { .sketches { grid-template-columns: repeat(2, 1fr); } }
+
+  .stay { text-align: center; }
+  .stay p { margin-left: auto; margin-right: auto; }
+  .btns.center { justify-content: center; }
 </style>
