@@ -2,6 +2,9 @@
 import Base from "../layouts/Base.astro";
 import { Image } from "astro:assets";
 import { site } from "../data/site";
+import { races, classGroups } from "../data/aldenexia";
+const portraits = import.meta.glob<{ default: ImageMetadata }>("../assets/races/*.jpg", { eager: true });
+const pic = (slug: string, g: string) => portraits[`../assets/races/${slug}-${g}.jpg`].default;
 import heroImg from "../assets/alden/camp_at_dusk_blightmoor_wastes_wide.jpg";
 import z01 from "../assets/alden/01_kordava_1.jpg";
 import z03 from "../assets/alden/03_ixtamar_beachhead_1.jpg";
@@ -17,8 +20,6 @@ import z14 from "../assets/alden/14_shifting_isles_1.jpg";
 import z15 from "../assets/alden/15_grimwharf_landing_2.jpg";
 import z16 from "../assets/alden/16_ashfall_dunes_2.jpg";
 
-const races = ["Human", "Elf", "Dwarf", "Gnome", "Halfling", "Half-Elf", "Ogre", "Troll", "Vol'kyne", "Half-Orc", "Lizardkin"];
-const classes = ["Voidknight", "Lightsworn", "Blademaster", "Lightmender", "Spiritweaver", "Wildspeaker", "Aetherfist", "Woodstalker", "Shadowblade", "Troubadour", "Gravecaller", "Runecaster", "Arcanist", "Chaosborne"];
 const zones = [
   { src: z01, name: "Kordava", alt: "A giant beetle on the beach at Kordava" },
   { src: z03, name: "Ixtamar Beachhead", alt: "A fire golem on the lava at Ixtamar Beachhead" },
@@ -59,14 +60,33 @@ const zones = [
   <div class="band" id="races"><h2>Races</h2></div>
   <section>
     <div class="wrap">
-      <ul class="plaques">{races.map((r) => <li>{r}</li>)}</ul>
+      <div class="races">
+        {races.map((r) => (
+          <article class="race panel">
+            <div class="faces">
+              <Image src={pic(r.slug, "male")} alt={`A male ${r.name}`} widths={[240, 400]} sizes="(max-width: 700px) 50vw, 190px" />
+              <Image src={pic(r.slug, "female")} alt={`A female ${r.name}`} widths={[240, 400]} sizes="(max-width: 700px) 50vw, 190px" />
+            </div>
+            <div class="body"><h3>{r.name}</h3><p class="home">Home: {r.home}</p><p>{r.text}</p></div>
+          </article>
+        ))}
+      </div>
     </div>
   </section>
 
   <div class="band" id="classes"><h2>Classes</h2></div>
   <section>
     <div class="wrap">
-      <ul class="plaques">{classes.map((c) => <li>{c}</li>)}</ul>
+      {classGroups.map((g) => (
+        <div class="cgroup">
+          <h3 class="role">{g.role}</h3>
+          <div class="classes">
+            {g.classes.map((c) => (
+              <article class="cls panel"><h4>{c.name}</h4><p class="hook">{c.hook}</p><p>{c.text}</p></article>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   </section>
 
@@ -111,6 +131,20 @@ const zones = [
     background: var(--paper), linear-gradient(180deg, var(--panel), var(--panel-2));
     border: 1px solid var(--line); box-shadow: inset 0 0 0 4px var(--panel), inset 0 0 0 5px rgba(107,74,43,.35);
   }
+  .races { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 22px; }
+  .race { overflow: hidden; }
+  .faces { display: grid; grid-template-columns: 1fr 1fr; }
+  .faces :global(img) { width: 100%; aspect-ratio: 1; object-fit: cover; }
+  .race .body { padding: 16px 20px 18px; }
+  .race h3 { margin: 0 0 .3em; }
+  .race p, .cls p { margin: 0; color: var(--muted); font-size: .98rem; }
+  .race .home { color: var(--cy); font-weight: 700; font-size: .85rem; margin-bottom: .5em; }
+  .cgroup + .cgroup { margin-top: 34px; }
+  .role { font-size: .8rem; font-family: var(--body); letter-spacing: .2em; text-transform: uppercase; color: var(--cy); margin-bottom: 12px; }
+  .classes { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+  .cls { padding: 18px 20px; border-top: 3px solid var(--teal); }
+  .cls h4 { font-size: 1.3rem; margin: 0 0 .2em; }
+  .cls .hook { font-style: italic; color: var(--ink); margin-bottom: .5em; }
   .zones { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 22px; }
   .zones figure { margin: 0; }
   .frame { display: block; border: 1px solid var(--frame); padding: 5px; background: var(--panel); box-shadow: 0 6px 16px rgba(60,40,20,.2); }
